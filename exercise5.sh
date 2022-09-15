@@ -15,6 +15,7 @@
 # - User can enter real numbers also
 # - Use bc command and piping to do.
 
+echo "Adding integers and/or real numbers"
 read -p "Enter first number to add: " num1
 read -p "Enter second number to add: " num2
 
