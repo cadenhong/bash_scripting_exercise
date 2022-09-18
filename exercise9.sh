@@ -14,6 +14,16 @@
 # Pass a filename through command-line.
 # Delete all the empty lines from that file and save it back.
 
-filename=$1
 
-sed -z 's/\n//g' $filename
+sed -i '/^$/d' $1
+
+# -i flag used to edit file in-place instead of printing to command line
+
+# caret symbol (^) used to match beginning of a regex
+# dollar symbol ($) used to match the end of a regex
+# together (^$) used to match the entire string
+# i.e:
+#	'^\d+$' means entire string must be digits
+# By not having anything in between, it matches an empty line
+
+# d is to delete the matching line
