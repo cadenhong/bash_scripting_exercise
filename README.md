@@ -1,2 +1,2 @@
 # Bash Scripting Exercise
-Scripting challenge released daily by KL for 30 Days
+Scripting challenges released daily by KL for 30 Days
