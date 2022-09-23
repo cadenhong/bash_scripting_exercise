@@ -1,7 +1,5 @@
 #!/bin/bash
 
-### Exercise 10 and 11 were the same
-
 # Write a script to perform arithmetic operation on digits of a given number depending upon the operator
 
 # Prerequisites:
