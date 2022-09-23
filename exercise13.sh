@@ -20,7 +20,7 @@ for (( i = 1 ; i <= 8 ; i++ )); do
 
     ctr=1
 
-    while [[ $ctr -le 5 ]]; do
+    while [[ $ctr -le 4 ]]; do
         if [[ $i%2 -eq 0 ]]; then
             echo -e -n "\e[1;40m   \e[0m"
             echo -e -n "\e[1;47m   \e[0m"
@@ -30,7 +30,7 @@ for (( i = 1 ; i <= 8 ; i++ )); do
         fi
         ctr=$((ctr+1))
         # if [[ $i%2 -eq 0 ]]; then
-	
+
         #     for (( j = 1 ; j <= 8 ; j+=2 )); do
         #         echo -e -n "\e[1;40m   \e[0m"
         #     done
