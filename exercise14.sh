@@ -15,23 +15,42 @@
 # - Provide a menu for user to choose ascending or descending.
 # - Show sorted array according to user choice.
 
-unsorted=$@
+unsorted=( "$@" )
 ctr=$#
 
-for n in $unsorted; do
-    echo $n
-    c=0
-    newarr[]=$n
-done
+echo "Current array: ${unsorted[@]}"
+read -p "Enter 1 to sort in ascending order, or 2 to sort in descending order: " order
 
-echo $newarr
+case $order in
+    1)
+        for (( i = 0 ; i < $ctr ; i++ )); do
+            for (( j = $i ; j < $ctr ; j++ )); do 
+                if [ ${unsorted[$i]} -gt ${unsorted[$j]} ]; then
+                    t=${unsorted[$i]}
+                    unsorted[$i]=${unsorted[$j]}
+                    unsorted[$j]=$t
+                fi
+            done
+        done
 
-# for (( i = 0 ; i < $ctr ; i++ )); do
-#     echo ${unsorted[$i]}
-# done
+        echo "Ascending Order: ${unsorted[@]}"
+        ;;
 
+    2)
+        for (( i = 0 ; i < $ctr ; i++ )); do
+            for (( j = $i ; j < $ctr ; j++ )); do 
+                if [ ${unsorted[$i]} -lt ${unsorted[$j]} ]; then
+                    t=${unsorted[$i]}
+                    unsorted[$i]=${unsorted[$j]}
+                    unsorted[$j]=$t
+                fi
+            done
+        done
 
-# echo "Select an option to sort the numbers in ascending or descending order:"
-# echo "1. Ascend"
-# echo "2. Descend"
-# read -p "Enter 1 or 2: " order
+        echo "Descending Order: ${unsorted[@]}"
+        ;;
+
+    *)
+        echo "Invalid input!"
+        ;;
+esac
