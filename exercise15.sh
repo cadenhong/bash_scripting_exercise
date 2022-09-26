@@ -46,8 +46,8 @@ read -p "Enter a number to you wish to check: " input
 
 case $input in
     1) who | awk '{print $1}' ;;
-    2) $SHELL ;;
-    3) $HOME ;;
+    2) echo $SHELL ;;
+    3) echo $HOME ;;
     4) hostnamectl | grep 'Operating System' ;;
     5) pwd ;;
     6) who | wc -l ;;
@@ -57,5 +57,5 @@ case $input in
     10) cat /proc/meminfo ;;
     11) df ;;
     12) ps aux ;;
-    *) "Invalid input!!!" ;;
+    *) echo "Invalid input!!!" ;;
 esac
