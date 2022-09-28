@@ -16,3 +16,13 @@
 # - Rename all files from current directory to lowercase letters.
 # - Rename all directories from current directories to uppercase.
 # - Digits and other symbols should remain same.
+
+for item in *; do                           # check each item in cwd
+    if [ -d "$item" ]; then                 # execute if item is a directory
+        new_dir=$(echo $item | tr a-z A-Z)
+        mv $item $new_dir
+    elif [ -f "$item" ]; then               # execute if item is a file
+        new_file=$(echo $item | tr A-Z a-z)
+        mv $item $new_file
+    fi
+done
