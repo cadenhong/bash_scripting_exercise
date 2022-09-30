@@ -20,7 +20,8 @@
 #       “Good evening” (5PM – 9 PM)
 #       “Good night” (9 PM – 5 AM)
 
-time=$(date '+%H%M%S')
+#time=$(date '+%H%M%S')
+time=50001
 
 if [ $time -ge 50001 ] && [ $time -le 120000 ]; then
     echo "Good morning!"
