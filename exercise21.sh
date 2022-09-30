@@ -20,8 +20,7 @@
 #       “Good evening” (5PM – 9 PM)
 #       “Good night” (9 PM – 5 AM)
 
-#time=$(date '+%H%M%S')
-time=50001
+time=$(date '+%H%M%S')
 
 if [ $time -ge 50001 ] && [ $time -le 120000 ]; then
     echo "Good morning!"
@@ -31,6 +30,6 @@ elif [ $time -ge 130001 ] && [ $time -le 170000 ]; then
     echo "Good afternoon!"
 elif [ $time -ge 170001 ] && [ $time -le 210000 ]; then
     echo "Good evening!"
-elif ([ $time -ge 210001 ] && [ $time -le 240000 ]) || ([ $time -ge 000000 ] && [ $time -le 50000 ]); then
+else
     echo "Good night!"
 fi
