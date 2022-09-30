@@ -20,16 +20,17 @@
 #       “Good evening” (5PM – 9 PM)
 #       “Good night” (9 PM – 5 AM)
 
+##### To have this script run upon login, copy or move this script inside /etc/profile.d
 time=$(date '+%H%M%S')
 
 if [ $time -ge 50001 ] && [ $time -le 120000 ]; then
-    echo "Good morning!"
+    echo "Good morning!" > /home/caden/Desktop/greetings.txt
 elif [ $time -ge 120001 ] && [ $time -le 130000 ]; then
-    echo "Good noon!"
+    echo "Good noon!" > /home/caden/Desktop/greetings.txt
 elif [ $time -ge 130001 ] && [ $time -le 170000 ]; then
-    echo "Good afternoon!"
+    echo "Good afternoon!" > /home/caden/Desktop/greetings.txt
 elif [ $time -ge 170001 ] && [ $time -le 210000 ]; then
-    echo "Good evening!"
+    echo "Good evening!" > /home/caden/Desktop/greetings.txt
 else
-    echo "Good night!"
+    echo "Good night!" > /home/caden/Desktop/greetings.txt
 fi
