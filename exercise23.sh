@@ -15,8 +15,6 @@
 # - Print longest and shortest name.
 
 usernames=( $(cat /etc/passwd | awk -F: '{print $1}') )
-total=${#usernames}
-
 longest=${usernames[0]}
 shortest=${usernames[0]}
 
@@ -29,7 +27,6 @@ for i in ${!usernames[@]}; do
   elif [ "$currLen" -lt "${#shortest}" ]; then
     shortest=$current
   fi
-
 done
 
 echo "Longest username: $longest"
