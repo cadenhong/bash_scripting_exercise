@@ -17,15 +17,9 @@
 
 password=$(tr -dc "A-Za-z0-9\!\@\#$%^&*/." < /dev/urandom | head -c 8)
 
-while [[ $password =~ ^[\!\@\#$%^&*\/.] ]]; do
-    password=$(tr -dc "A-Za-z0-9\!\@\#$%^&*/." < /dev/urandom | head -c 8)
+while [[ ! $password =~ [!@#$%^\&*\/.] ]]; do
+        echo "the password is $password - regenerating..."
+        password=$(tr -dc "A-Za-z0-9\!\@\#$%^&*/." < /dev/urandom | head -c 8)
 done
 
 echo $password
-
-# for char in $special;
-#     if grep -q "$char" <<< "$password"; then
-
-#     fi
-
-# done
