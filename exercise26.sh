@@ -13,20 +13,22 @@
 # Requirements:
 # - This script will work like a ls command.
 # - Don’t use ls command.
-# - Pass any number of directories through command-line.ß
+# - Pass any number of directories through command-line.
 # - If no arguments passed, list current directory.
 
-totalDir=$#
-
-if [ $totalDir -eq 0 ]; then
-    directory=$(pwd)
-    for filename in *; do
-        echo "file name is " $filename
+if [ $# -eq 0 ]; then
+    echo "CONTENTS OF $(pwd)"
+    for content in *; do
+        echo -n "$content "
     done
+    echo
 else
-    for directory in $@; do
-        for filename in $directory/$*; do
-            echo "file name is " $filename
+    for directory in "$@"; do
+	echo "CONTENTS OF $directory"
+        for content in $directory/*; do
+	    name=$(echo $content | awk -F\/ '{print $(NF)}')
+            echo -n "$name "
         done
+	echo $'\n'
     done
 fi
