@@ -16,4 +16,12 @@
 
 read -p "Enter file system to check if mounted: " filesystem
 
-df -T | grep $filesystem
+mounted=$(df -T | grep $filesystem)
+
+if [ -z "$mounted" ]; then
+  echo "$filesystem is NOT mounted"
+  exit 1
+else
+  available=$(echo $mounted | awk '{print $5}')
+  echo "Available storage is $available"
+fi
