@@ -17,16 +17,18 @@
 
 function echo_recursion() {
     ctr=$#
-    item=$1
-    items=( "$@" )
+    items=$@
     
     if [[ $ctr -eq 0 ]]; then
-        echo $items
-        echo "Done"
+        exit 0
     else
-        echo $item
-        echo ${items[@]/$item}
+        echo $1
+        items=${items[@]/$1}
+        echo_recursion $items
     fi
 }
 
-echo_recursion
+echo_recursion $@
+
+# Resource:
+# https://linuxhint.com/remove-specific-array-element-bash/
