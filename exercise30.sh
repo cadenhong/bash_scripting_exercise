@@ -16,8 +16,6 @@
 
 dir_name=$@
 
-cd $dir_name
-
-for f in *:
-    chmod og-rwx $f
+for f in $dir_name/*; do
+    chmod og-rwx "$f
 done
