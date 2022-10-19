@@ -13,14 +13,12 @@
 # Fetch user-names from the first field in /etc/passwd file.
 # Search given name in the list.
 
-usernames=( $(cat /etc/passwd | awk -F: '{print $1}') )
+usernames=( $(cat /etc/passwd | awk -F: '{print $1}') ) # array of usernames from /etc/passwd
 
-read -p "Enter username to check if present in this system: " user_input
+read -p "Enter username to check if present in this system: " user_input # user input stored in variable
 
-for username in ${usernames[@]}; do
-  if [ $username -eq $user_input]; then
+for username in ${usernames[@]}; do # for each element in usernames array
+  if [[ $username == $user_input ]]; then # check if it equals user_input
     echo "$user_input is present!"
-  else
-    echo "$user_input is NOT present in this system."
   fi
 done
