@@ -15,14 +15,14 @@
 # User can change the range using command-line arguments.
 # Default is 500 – 100000.
 
-user_name=( $(cat /etc/passwd | awk -F: '{print $1}'))
-user_id=( $(cat /etc/passwd | awk -F: '{print $3}'))
-ctr=0
+user_name=( $(cat /etc/passwd | awk -F: '{print $1}')) # array of usernames
+user_id=( $(cat /etc/passwd | awk -F: '{print $3}')) # array of user ids
+ctr=0 # counter
 
-for (( i=0; i<${#user_id[@]}; i++ )); do
-    if [ ${user_id[$i]} -ge 500 ] && [ ${user_id[$i]} -le 100000 ]; then
-        ((ctr=$ctr+1))
-        echo $user_name[$i]
+for (( i=0; i<${#user_id[@]}; i++ )); do # for loop to index thru user_id array
+    if [ ${user_id[$i]} -ge 500 ] && [ ${user_id[$i]} -le 100000 ]; then # if user_id in certain index is between 500-100000
+        ((ctr=$ctr+1)) # increment counter
+        echo ${user_name[$i]} # echo corresponding username
     fi
 done
 
