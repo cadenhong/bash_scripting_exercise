@@ -19,3 +19,23 @@
 # Count only files have executable permission.
 # Verify path is present every-time.
 
+dirs=( $(echo $PATH | awk -F: '{ for( i=1; i<NF; i++ ) print $i }' | uniq) )
+
+total=0
+
+for dir in ${dirs[@]}; do
+
+  ctr=0
+
+  for file in $dir/*; do
+    if [ -x $file ]; then
+      ((ctr=$ctr+1))
+    fi
+  done
+
+  echo "Num of Executables in $dir is: $ctr"
+  ((total=$total+$ctr))
+
+done
+
+echo "Total Num of Executables in PATH variable is: $total"
