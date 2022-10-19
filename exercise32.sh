@@ -21,7 +21,7 @@ ctr=0
 
 for (( i=0; i<${#user_id[@]}; i++ )); do
     if [ ${user_id[$i]} -ge 500 ] && [ ${user_id[$i]} -le 100000 ]; then
-        ctr=$ctr+1
+        ((ctr=$ctr+1))
         echo $user_name[$i]
     fi
 done
