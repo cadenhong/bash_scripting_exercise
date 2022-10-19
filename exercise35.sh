@@ -13,11 +13,21 @@
 # Requirements:
 # Provede a .c file to this script through command-line.
 # Randomly delete 20% lines from the file.
-# Whereever you deleted replace a string.
+# Wherever you deleted replace a string.
 
 file=$1
 
-total_lines=$(cat $file | wc -l)
-fifth_of_lines=((total_lines/5))
+total_lines=$(cat $file | wc -l) # line count of file
+((twt_pct=total_lines/5)) # calculating 20% of total line count
 
-echo $fifth_of_lines
+echo "Total num of lines $total_lines"
+echo "20 percent is $twt_pct"
+
+for (( i=0; i<$twt_pct; i++ )); do # for twt_pct number of times
+  line=$(shuf -i 1-$total_lines -n 1) # generate a random num within line count range
+  echo "random line num is $line"
+  sed -i "${line} c\"THIS LINE HAS BEEN REPLACED" $file # replace that line with replacement variable
+done
+
+echo
+cat $file
